@@ -33,3 +33,13 @@ serde = "1.0"
 serde_json = "1.0"
 rand = "0.5"
 pretty_assertions = "0.5"
+
+[profile.release]
+# For profiling; https://github.com/rust-lang/cargo/issues/4240
+debug = true
+# lto = false
+
+[profile.bench]
+# For profiling; https://github.com/rust-lang/cargo/issues/4240
+debug = true
+# lto = false

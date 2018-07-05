@@ -153,6 +153,7 @@ impl<A> Chunk<A> {
         unsafe { Chunk::force_write(self.left, value, self) }
     }
 
+    #[inline(never)]
     pub fn push_back(&mut self, value: A) {
         if self.is_full() {
             panic!("Chunk::push_back: can't push to full chunk");
@@ -166,7 +167,22 @@ impl<A> Chunk<A> {
             self.left = 0;
         }
         unsafe { Chunk::force_write(self.right, value, self) }
+        for _i in 0..10 {
+            self.do_stuff();
+        }
         self.right += 1;
+    }
+
+    #[inline(never)]
+    pub fn do_stuff(&mut self) {
+        let mut sum = 0;
+        for _i in 0..10000 {
+            sum += self.right;
+            sum /= 2;
+        }
+        if sum == 10 {
+            panic!("x");
+        }
     }
 
     pub fn pop_front(&mut self) -> A {
