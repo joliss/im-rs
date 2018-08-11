@@ -5,6 +5,7 @@
 extern crate rustc_version;
 
 use rustc_version::{version_meta, Channel};
+use std::env;
 
 fn main() {
     println!("cargo:rerun-if-changed=build.rs");
@@ -13,5 +14,14 @@ fn main() {
             println!("cargo:rustc-cfg=has_specialisation");
         }
         _ => (),
+    }
+    let pkgname = env::var("CARGO_PKG_NAME").expect("Cargo didn't set the CARGO_PKG_NAME env var!");
+    match pkgname.as_str() {
+        "im-arc" => println!("cargo:rustc-cfg=ref_arc"),
+        "im-rc" => {}
+        _ => panic!("unexpected package name!"),
+    }
+    if env::var("IM_TEST_ARC").is_ok() {
+        println!("cargo:rustc-cfg=ref_arc");
     }
 }

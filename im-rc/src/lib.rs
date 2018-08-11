@@ -293,7 +293,7 @@ mod test;
 /// # Examples
 ///
 /// ```
-/// # #[macro_use] extern crate im;
+/// # #[macro_use] extern crate im_rc;
 /// # use std::sync::Arc;
 /// # fn main() {
 /// let vec_inside_vec = vector![vector![1, 2, 3], vector![4, 5, 6]];
@@ -329,7 +329,7 @@ macro_rules! update_in {
 /// # Examples
 ///
 /// ```
-/// # #[macro_use] extern crate im;
+/// # #[macro_use] extern crate im_rc;
 /// # use std::sync::Arc;
 /// # fn main() {
 /// let vec_inside_vec = vector![vector![1, 2, 3], vector![4, 5, 6]];

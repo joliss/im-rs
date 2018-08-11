@@ -41,8 +41,8 @@ use vector::{Vector, RRB};
 /// scenes, so the performance of the two should be identical.
 ///
 /// ```rust
-/// # #[macro_use] extern crate im;
-/// # use im::vector::Vector;
+/// # #[macro_use] extern crate im_rc;
+/// # use im_rc::vector::Vector;
 /// # use std::iter::FromIterator;
 /// # fn main() {
 /// let mut vec = Vector::from_iter(0..1000);
@@ -316,8 +316,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// # #[macro_use] extern crate im;
-    /// # use im::vector::Vector;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::vector::Vector;
     /// # use std::iter::FromIterator;
     /// # fn main() {
     /// let mut vec = vector![1, 2, 3, 4, 5];
@@ -350,8 +350,8 @@ where
     /// # Examples
     ///
     /// ```rust
-    /// # #[macro_use] extern crate im;
-    /// # use im::vector::Vector;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::vector::Vector;
     /// # use std::iter::FromIterator;
     /// # fn main() {
     /// let mut vec = vector![1, 2, 3, 4, 5];

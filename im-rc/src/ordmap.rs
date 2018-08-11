@@ -39,8 +39,8 @@ pub use nodes::btree::{ConsumingIter, DiffItem, DiffIter, Iter};
 /// # Examples
 ///
 /// ```
-/// # #[macro_use] extern crate im;
-/// # use im::ordmap::OrdMap;
+/// # #[macro_use] extern crate im_rc;
+/// # use im_rc::ordmap::OrdMap;
 /// # fn main() {
 /// assert_eq!(
 ///   ordmap!{
@@ -181,8 +181,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map = OrdMap::singleton(123, "onetwothree");
     /// assert_eq!(
@@ -205,8 +205,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// assert!(
     ///   !ordmap!{1 => 2}.is_empty()
@@ -229,8 +229,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// assert_eq!(3, ordmap!{
     ///   1 => 11,
@@ -253,8 +253,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// assert_eq!(Some(&(3, 33)), ordmap!{
     ///   1 => 11,
@@ -276,8 +276,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// assert_eq!(Some(&(1, 11)), ordmap!{
     ///   1 => 11,
@@ -332,8 +332,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map = ordmap!{123 => "lol"};
     /// assert_eq!(
@@ -368,8 +368,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map = ordmap!{123 => "lol"};
     /// assert!(
@@ -403,8 +403,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let mut map = ordmap!{};
     /// map.insert(123, "123");
@@ -441,8 +441,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let mut map = ordmap!{123 => "123", 456 => "456"};
     /// map.remove(&123);
@@ -493,8 +493,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map = ordmap!{};
     /// assert_eq!(
@@ -647,8 +647,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map1 = ordmap!{1 => 1, 3 => 3};
     /// let map2 = ordmap!{2 => 2, 3 => 4};
@@ -697,8 +697,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map1 = ordmap!{1 => 1, 3 => 4};
     /// let map2 = ordmap!{2 => 2, 3 => 5};
@@ -736,8 +736,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map1 = ordmap!{1 => 1, 3 => 3};
     /// let map2 = ordmap!{2 => 2};
@@ -802,8 +802,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map1 = ordmap!{1 => 1, 3 => 4};
     /// let map2 = ordmap!{2 => 2, 3 => 5};
@@ -839,8 +839,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map1 = ordmap!{1 => 1, 3 => 4};
     /// let map2 = ordmap!{2 => 2, 3 => 5};
@@ -878,8 +878,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map1 = ordmap!{1 => 1, 2 => 2};
     /// let map2 = ordmap!{2 => 3, 3 => 4};
@@ -918,8 +918,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map1 = ordmap!{1 => 1, 2 => 2};
     /// let map2 = ordmap!{2 => 3, 3 => 4};
@@ -995,8 +995,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map1 = ordmap!{1 => 1, 2 => 2};
     /// let map2 = ordmap!{1 => 1, 2 => 2, 3 => 3};
@@ -1022,8 +1022,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordmap::OrdMap;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordmap::OrdMap;
     /// # fn main() {
     /// let map1 = ordmap!{1 => 1, 2 => 2};
     /// let map2 = ordmap!{1 => 1, 2 => 2, 3 => 3};

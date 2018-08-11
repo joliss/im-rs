@@ -10,5 +10,8 @@ install:
   - rustup toolchain add nightly
   - rustup component add --toolchain nightly clippy-preview; true
 script:
+  - ./build.sh
   - cargo +nightly clippy -- -D warnings
   - cargo test
+  - cargo clean
+  - IM_TEST_ARC=1 cargo test

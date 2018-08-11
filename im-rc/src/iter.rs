@@ -53,9 +53,9 @@ where
 ///
 /// # Examples
 /// ```
-/// # #[macro_use] extern crate im;
-/// # use im::iter::unfold;
-/// # use im::vector::Vector;
+/// # #[macro_use] extern crate im_rc;
+/// # use im_rc::iter::unfold;
+/// # use im_rc::vector::Vector;
 /// # use std::iter::FromIterator;
 /// # fn main() {
 /// // Create an infinite stream of numbers, starting at 0.
@@ -92,9 +92,9 @@ where
 ///
 /// # Examples
 /// ```
-/// # #[macro_use] extern crate im;
-/// # use im::iter::unfold_mut;
-/// # use im::vector::Vector;
+/// # #[macro_use] extern crate im_rc;
+/// # use im_rc::iter::unfold_mut;
+/// # use im_rc::vector::Vector;
 /// # use std::iter::FromIterator;
 /// # fn main() {
 /// // Create an infinite stream of numbers, starting at 0.

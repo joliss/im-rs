@@ -5,7 +5,7 @@
 #![feature(test)]
 #![cfg_attr(feature = "cargo-clippy", allow(unreadable_literal))]
 
-extern crate im;
+extern crate im_rc;
 extern crate rand;
 extern crate test;
 

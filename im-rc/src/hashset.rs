@@ -43,8 +43,8 @@ use util::Ref;
 /// # Examples
 ///
 /// ```
-/// # #[macro_use] extern crate im;
-/// # use im::hashset::HashSet;
+/// # #[macro_use] extern crate im_rc;
+/// # use im_rc::hashset::HashSet;
 /// # fn main() {
 /// assert_eq!(
 ///   hashset![1, 2, 3],
@@ -141,8 +141,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::hashset::HashSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::hashset::HashSet;
     /// # use std::sync::Arc;
     /// # fn main() {
     /// let set = HashSet::singleton(123);
@@ -163,8 +163,8 @@ impl<A, S> HashSet<A, S> {
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::hashset::HashSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::hashset::HashSet;
     /// # fn main() {
     /// assert!(
     ///   !hashset![1, 2, 3].is_empty()
@@ -187,8 +187,8 @@ impl<A, S> HashSet<A, S> {
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::hashset::HashSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::hashset::HashSet;
     /// # fn main() {
     /// assert_eq!(3, hashset![1, 2, 3].len());
     /// # }
@@ -340,8 +340,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::hashset::HashSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::hashset::HashSet;
     /// # use std::sync::Arc;
     /// # fn main() {
     /// let set = hashset![123];
@@ -401,8 +401,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::hashset::HashSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::hashset::HashSet;
     /// # fn main() {
     /// let set1 = hashset!{1, 2};
     /// let set2 = hashset!{2, 3};
@@ -437,8 +437,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::hashset::HashSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::hashset::HashSet;
     /// # fn main() {
     /// let set1 = hashset!{1, 2};
     /// let set2 = hashset!{2, 3};
@@ -463,8 +463,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::hashset::HashSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::hashset::HashSet;
     /// # fn main() {
     /// let set1 = hashset!{1, 2};
     /// let set2 = hashset!{2, 3};

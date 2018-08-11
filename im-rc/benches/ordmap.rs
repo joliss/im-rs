@@ -5,7 +5,7 @@
 #![feature(test)]
 #![cfg_attr(feature = "cargo-clippy", allow(unreadable_literal))]
 
-extern crate im;
+extern crate im_rc;
 extern crate rand;
 extern crate test;
 
@@ -13,7 +13,7 @@ use rand::{rngs::SmallRng, FromEntropy, Rng};
 use std::iter::FromIterator;
 use test::Bencher;
 
-use im::ordmap::OrdMap;
+use im_rc::ordmap::OrdMap;
 
 fn random_keys(size: usize) -> Vec<i64> {
     let mut gen = SmallRng::from_entropy();

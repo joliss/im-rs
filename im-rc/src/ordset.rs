@@ -41,8 +41,8 @@ pub type DiffItem<'a, A> = NodeDiffItem<'a, A>;
 /// # Examples
 ///
 /// ```
-/// # #[macro_use] extern crate im;
-/// # use im::ordset::OrdSet;
+/// # #[macro_use] extern crate im_rc;
+/// # use im_rc::ordset::OrdSet;
 /// # fn main() {
 /// assert_eq!(
 ///   ordset![1, 2, 3],
@@ -191,8 +191,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordset::OrdSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordset::OrdSet;
     /// # fn main() {
     /// let set = OrdSet::singleton(123);
     /// assert!(set.contains(&123));
@@ -212,8 +212,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordset::OrdSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordset::OrdSet;
     /// # fn main() {
     /// assert!(
     ///   !ordset![1, 2, 3].is_empty()
@@ -236,8 +236,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordset::OrdSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordset::OrdSet;
     /// # fn main() {
     /// assert_eq!(3, ordset![1, 2, 3].len());
     /// # }
@@ -310,8 +310,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordset::OrdSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordset::OrdSet;
     /// # fn main() {
     /// let mut set = ordset!{};
     /// set.insert(123);
@@ -394,8 +394,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordset::OrdSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordset::OrdSet;
     /// # fn main() {
     /// let set = ordset![456];
     /// assert_eq!(
@@ -457,8 +457,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordset::OrdSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordset::OrdSet;
     /// # fn main() {
     /// let set1 = ordset!{1, 2};
     /// let set2 = ordset!{2, 3};
@@ -492,8 +492,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordset::OrdSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordset::OrdSet;
     /// # fn main() {
     /// let set1 = ordset!{1, 2};
     /// let set2 = ordset!{2, 3};
@@ -518,8 +518,8 @@ where
     /// # Examples
     ///
     /// ```
-    /// # #[macro_use] extern crate im;
-    /// # use im::ordset::OrdSet;
+    /// # #[macro_use] extern crate im_rc;
+    /// # use im_rc::ordset::OrdSet;
     /// # fn main() {
     /// let set1 = ordset!{1, 2};
     /// let set2 = ordset!{2, 3};

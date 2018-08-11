@@ -4,17 +4,17 @@
 
 #![feature(test)]
 
-extern crate im;
+extern crate im_rc;
 extern crate rand;
 extern crate test;
 
-use im::iter::unfold_mut;
+use im_rc::iter::unfold_mut;
 use rand::distributions::{Distribution, Standard};
 use rand::Rng;
 use std::iter::FromIterator;
 use test::Bencher;
 
-use im::vector::Vector;
+use im_rc::vector::Vector;
 
 fn rando<A>() -> impl Iterator<Item = A>
 where
