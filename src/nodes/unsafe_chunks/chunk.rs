@@ -9,10 +9,9 @@ use std::ops::{Index, IndexMut};
 use std::ptr;
 use std::slice::{from_raw_parts, from_raw_parts_mut};
 
-// We might want to write down what we're assuming about this constant so we
-// don't accidentally make it unsafe by changing it. (Or even have the compiler
-// statically check this.) First attempt: Chunk::pair requires CHUNK_SIZE >= 2,
-// and Vector::append requires CHUNK_SIZE * 4 < usize::MAX.
+// Before changing the type of this, note that various arithmetic operations
+// rely on multiples of CHUNK_SIZE being able to fit into its type without
+// overflow.
 pub const CHUNK_SIZE: usize = 64;
 
 pub struct Chunk<A> {
@@ -66,6 +65,7 @@ impl<A> Chunk<A> {
     }
 
     pub fn pair(left: A, right: A) -> Self {
+        debug_assert!(CHUNK_SIZE >= 2);
         let mut chunk: Self;
         unsafe {
             chunk = mem::uninitialized();
