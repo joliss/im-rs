@@ -627,6 +627,56 @@ mod test {
     }
 
     #[test]
+    fn iter_mut() {
+        let mut chunk = Chunk::new();
+        for i in 0..64 {
+            chunk.push_back(i);
+        }
+        let mut iter = chunk.iter_mut();
+        let a: &mut i64 = {
+            iter.next().unwrap()
+        };
+        iter.left_index = 0;
+        let b: &mut i64 = {
+            iter.next().unwrap()
+        };
+        // a and b are now aliased mut references
+        *a += 2;
+        eprintln!("{} {}", a, b);
+    }
+
+    // #[test]
+    // fn vec_iter_mut() {
+    //     let mut v = Vec::<i64>::new();
+    //     v.push(0);
+    //     v.push(1);
+    //     let x: &mut i64;
+    //     let y: &mut i64;
+    //     {
+    //         let mut v_iter = v.iter_mut();
+    //         x = v_iter.next().unwrap();
+    //         y = v_iter.next().unwrap();
+    //     }
+    //     *x += 2;
+    //     *y += 2;
+    //     eprintln!("{} {}", x, y);
+    // }
+
+    #[test]
+    fn iter_ref() {
+        let mut chunk = Chunk::new();
+        for i in 0..64 {
+            chunk.push_back(i);
+        }
+        let a: &i64;
+        let b: &i64;
+        let mut iter = chunk.iter();
+        a = iter.next().unwrap();
+        b = iter.next().unwrap();
+        eprintln!("{} {}", a, b);
+    }
+
+    #[test]
     fn consuming_iter() {
         let mut chunk = Chunk::new();
         for i in 0..64 {
