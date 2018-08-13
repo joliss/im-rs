@@ -9,6 +9,10 @@ use std::ops::{Index, IndexMut};
 use std::ptr;
 use std::slice::{from_raw_parts, from_raw_parts_mut};
 
+// We might want to write down what we're assuming about this constant so we
+// don't accidentally make it unsafe by changing it. (Or even have the compiler
+// statically check this.) First attempt: Chunk::pair requires CHUNK_SIZE >= 2,
+// and Vector::append requires CHUNK_SIZE * 4 < usize::MAX.
 pub const CHUNK_SIZE: usize = 64;
 
 pub struct Chunk<A> {
@@ -444,6 +448,7 @@ impl<'a, A> Iterator for IterMut<'a, A> {
             // this is annoying: the trait won't allow `fn next(&'a mut self)`,
             // so we have to turn to the Dark Side to get the right lifetime
             unsafe { value.map(|p| &mut *(p as *mut _)) }
+            // How do we verify that this is correct?
         }
     }
 

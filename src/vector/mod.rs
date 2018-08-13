@@ -786,7 +786,7 @@ impl<A: Clone> Vector<A> {
                     {
                         left.inner_b = right.inner_b;
                         left.outer_b = right.outer_b;
-                        left.length += right.length;
+                        left.length += right.length; // this can overflow
                         return;
                     }
                     // If left and right are trees with empty middles and left's buffers
