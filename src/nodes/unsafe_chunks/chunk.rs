@@ -677,6 +677,14 @@ mod test {
     }
 
     #[test]
+    fn overflow() {
+        let mut a: usize = 0;
+        eprintln!("{}", a);
+        a -= 1;
+        eprintln!("{}", a);
+    }
+
+    #[test]
     fn consuming_iter() {
         let mut chunk = Chunk::new();
         for i in 0..64 {
