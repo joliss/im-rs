@@ -1069,20 +1069,26 @@ mod test {
 
     #[test]
     fn issue_60() {
-        for i in 0..10_000_000 {
+        for k0 in 0..10000 { for k1 in 0..10000 {
+
             let mut lhs = vec![
                 604, 986, 436, 379, 59, 423, 391, 434, 375, 486, 64, 851, 631, 89,
             ];
             lhs.sort();
 
             // // let mut iset: HashSet<_, BuildHasherDefault<LolHasher<U4>>> = Default::default();
-            // use test::SeededSipHasher;
+            use test::SeededSipHasher;
             // // let mut hasher = Ref::from(SeededSipHasher::with_seed((
             // //     3869110953215220700,
             // //     16403055958334273935,
             // // )));
             // let mut hasher = Ref::from(SeededSipHasher::new());
-            let mut iset = HashSet::new();
+            let mut hasher = Ref::from(SeededSipHasher::with_seed((
+                k0,
+                k1,
+            )));
+            let mut iset: HashSet<_, SeededSipHasher> = HashSet::with_hasher(hasher.clone());
+            // let mut iset = HashSet::new();
             for &i in &lhs {
                 iset.insert(i);
             }
@@ -1091,14 +1097,15 @@ mod test {
             rhs.sort();
 
             if lhs != rhs {
-                println!("iteration: {}", i);
+                // println!("iteration: {}", i);
                 // println!("seed: {}, {}", hasher.seed().0, hasher.seed().1);
+                println!("seed: {}, {}", k0, k1);
                 println!("lhs: {}: {:?}", lhs.len(), &lhs);
                 println!("rhs: {}: {:?}", rhs.len(), &rhs);
                 println!("iset: {}: {:?}", iset.len(), &iset.get_root());
                 panic!();
             }
-        }
+        } }
     }
 
     proptest! {
