@@ -4,7 +4,6 @@
 
 use nodes::types::Bits;
 
-#[derive(PartialEq, Eq)]
 pub struct Bitmap<Size: Bits> {
     data: Size::Store,
 }
@@ -22,6 +21,20 @@ impl<Size: Bits> Default for Bitmap<Size> {
         Bitmap {
             data: Size::Store::default(),
         }
+    }
+}
+
+impl<Size: Bits> PartialEq for Bitmap<Size> {
+    fn eq(&self, other: &Self) -> bool {
+        self.data == other.data
+    }
+}
+
+use std::fmt;
+
+impl<Size: Bits> fmt::Debug for Bitmap<Size> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
+        self.data.fmt(f)
     }
 }
 
@@ -77,6 +90,27 @@ impl<Size: Bits> Iterator for Iter<Size> {
         } else {
             self.index += 1;
             self.next()
+        }
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use proptest::collection::btree_set;
+    use typenum::U64;
+
+    proptest! {
+        #[test]
+        fn get_set_and_iter(bits in btree_set(0..64usize, 0..64)) {
+            let mut bitmap = Bitmap::<U64>::new();
+            for i in &bits {
+                bitmap.set(*i, true);
+            }
+            for i in 0..64 {
+                assert_eq!(bitmap.get(i), bits.contains(&i));
+            }
+            assert!(bitmap.into_iter().eq(bits.into_iter()));
         }
     }
 }

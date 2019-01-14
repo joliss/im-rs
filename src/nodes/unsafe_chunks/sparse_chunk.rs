@@ -36,6 +36,9 @@ impl<A: Clone, N: Bits + ChunkLength<A>> Clone for SparseChunk<A, N> {
                 SparseChunk::force_write(index, self.values()[index].clone(), &mut out);
             }
         }
+        debug_assert_eq!(out.map, self.map);
+        debug_assert_eq!(out.len(), self.len());
+        println!("cloned chunk");
         out
     }
 }

@@ -100,8 +100,8 @@ pub struct HashSet<A, S = RandomState> {
     size: usize,
 }
 
-#[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
-struct Value<A>(A);
+#[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Debug)]
+pub struct Value<A>(A);
 
 impl<A> Deref for Value<A> {
     type Target = A;
@@ -547,6 +547,10 @@ where
     {
         self.len() != other.borrow().len() && self.is_subset(other)
     }
+
+    pub fn get_root(&self) -> Ref<Node<Value<A>>> {
+        self.root.clone()
+    }
 }
 
 // Core traits
@@ -720,7 +724,7 @@ where
 impl<A, S> Debug for HashSet<A, S>
 where
     A: Hash + Eq + Clone + Debug,
-    S: BuildHasher + Default,
+    S: BuildHasher,
 {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
         f.debug_set().entries(self.iter()).finish()
@@ -731,7 +735,7 @@ where
 impl<A, S> Debug for HashSet<A, S>
 where
     A: Hash + Eq + Clone + Debug,
-    S: BuildHasher + Default,
+    S: BuildHasher,
 {
     default fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
         f.debug_set().entries(self.iter()).finish()
@@ -742,7 +746,7 @@ where
 impl<A, S> Debug for HashSet<A, S>
 where
     A: Hash + Eq + Clone + Debug + Ord,
-    S: BuildHasher + Default,
+    S: BuildHasher,
 {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
         f.debug_set().entries(self.iter()).finish()
@@ -1033,6 +1037,7 @@ mod test {
     use proptest::num::i16;
     use std::hash::BuildHasherDefault;
     use test::LolHasher;
+    use typenum::U64;
 
     #[test]
     fn insert_failing() {
@@ -1060,6 +1065,40 @@ mod test {
             "bar",
         };
         assert_eq!(set1, set2);
+    }
+
+    #[test]
+    fn issue_60() {
+        for i in 0..10_000_000 {
+            let mut lhs = vec![
+                604, 986, 436, 379, 59, 423, 391, 434, 375, 486, 64, 851, 631, 89,
+            ];
+            lhs.sort();
+
+            // // let mut iset: HashSet<_, BuildHasherDefault<LolHasher<U4>>> = Default::default();
+            // use test::SeededSipHasher;
+            // // let mut hasher = Ref::from(SeededSipHasher::with_seed((
+            // //     3869110953215220700,
+            // //     16403055958334273935,
+            // // )));
+            // let mut hasher = Ref::from(SeededSipHasher::new());
+            let mut iset = HashSet::new();
+            for &i in &lhs {
+                iset.insert(i);
+            }
+
+            let mut rhs: Vec<_> = iset.clone().into_iter().collect();
+            rhs.sort();
+
+            if lhs != rhs {
+                println!("iteration: {}", i);
+                // println!("seed: {}, {}", hasher.seed().0, hasher.seed().1);
+                println!("lhs: {}: {:?}", lhs.len(), &lhs);
+                println!("rhs: {}: {:?}", rhs.len(), &rhs);
+                println!("iset: {}: {:?}", iset.len(), &iset.get_root());
+                panic!();
+            }
+        }
     }
 
     proptest! {

@@ -2,6 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+use std::fmt::Debug;
 use std::marker::PhantomData;
 
 use typenum::*;
@@ -49,7 +50,7 @@ where
 // Bit field sizes
 
 pub trait Bits: Unsigned {
-    type Store: Default + Copy;
+    type Store: Default + Copy + PartialEq + Debug;
 
     fn get(bits: &Self::Store, index: usize) -> bool;
     fn set(bits: &mut Self::Store, index: usize, value: bool) -> bool;

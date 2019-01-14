@@ -650,3 +650,63 @@ where
 impl<A: HashValue> ExactSizeIterator for Drain<A> {}
 
 impl<A: HashValue> FusedIterator for Drain<A> {}
+
+use std::fmt;
+
+impl<A: HashValue + fmt::Debug> fmt::Debug for Node<A> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
+        write!(f, "Node[ ")?;
+        for i in self.data.indices() {
+            write!(f, "{}: ", i)?;
+            match &self.data[i] {
+                Entry::Value(v, h) => write!(f, "{:?} :: {}, ", v, h)?,
+                Entry::Collision(c) => write!(f, "Coll{:?} :: {}", c.data, c.hash)?,
+                Entry::Node(n) => write!(f, "{:?}, ", n)?,
+            }
+        }
+        write!(f, " ]")
+    }
+}
+
+// #[cfg(test)]
+// mod test {
+//     use super::*;
+//
+//     #[derive(Clone, Copy, PartialEq, Eq, Hash, Debug)]
+//     pub struct Value<A>(A);
+//
+//     impl<A> HashValue for Value<A>
+//     where
+//         A: Hash + Eq + Clone,
+//     {
+//         type Key = A;
+//
+//         fn extract_key(&self) -> &Self::Key {
+//             &self.0
+//         }
+//
+//         fn ptr_eq(&self, _other: &Self) -> bool {
+//             false
+//         }
+//     }
+//
+//     #[test]
+//     fn issue_60_nodes() {
+//         for _i in 0..10_000_000 {
+//             let mut root = Node::new();
+//             root.insert(36_922_720, 0, Value(391));
+//             root.insert(3_191_980_577, 0, Value(631));
+//             root.insert(3_262_253_921, 0, Value(434));
+//             root.insert(4_025_453_409, 0, Value(423));
+//             root.insert(410_565_986, 0, Value(604));
+//             let arc = Ref::from(root);
+//             let mut iter = Drain::new(arc.clone(), 5);
+//             assert_eq!(Some((Value(391), 36_922_720)), iter.next());
+//             assert_eq!(Some((Value(631), 3_191_980_577)), iter.next());
+//             assert_eq!(Some((Value(434), 3_262_253_921)), iter.next());
+//             assert_eq!(Some((Value(423), 4_025_453_409)), iter.next());
+//             assert_eq!(Some((Value(604), 410_565_986)), iter.next());
+//             assert_eq!(None, iter.next());
+//         }
+//     }
+// }

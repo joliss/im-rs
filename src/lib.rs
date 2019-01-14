@@ -336,6 +336,7 @@
 #![deny(unsafe_code)]
 #![cfg_attr(has_specialisation, feature(specialization))]
 #![cfg_attr(docs_rs_workaround, feature(slice_get_slice))]
+#![feature(hashmap_internals)]
 
 extern crate typenum;
 
@@ -351,7 +352,7 @@ extern crate quickcheck;
 extern crate proptest;
 
 #[cfg(feature = "proptest")]
-proptest!{}
+proptest! {}
 
 #[cfg(any(test, feature = "serde"))]
 extern crate serde;
@@ -360,6 +361,9 @@ extern crate serde_json;
 
 #[cfg(all(threadsafe, any(test, feature = "rayon")))]
 extern crate rayon;
+
+#[cfg(test)]
+extern crate rand;
 
 mod config;
 mod nodes;
